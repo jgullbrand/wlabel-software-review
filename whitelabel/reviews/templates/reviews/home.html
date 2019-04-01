@@ -27,28 +27,28 @@
 
   <!-- Cards -->
   <div class="text-center">
-          <h1 class="mb-2 mt-3">Featured Software Categories</h1>
+          <h1 class="mb-2 mt-3">Software Categories</h1>
   </div>
 
-  <div class="row">
 
-    <div class="col-md-4 mb-3 mt-3">
+  <div class="row mx-auto">
+
+    {% for category in categories %}
+    <div class="col-md-4 my-3 mx-auto">
       <div class="card h-100">
         <div class="card-header text-center text-white">
-            <strong><a href="#">Software Category</a></strong>
+            <strong><a href="#">{{category.category_name}}</a></strong>
         </div>  
-        <div class="card-body">
-          <p class="card-text">This is where the description will go for each card</p>
-        </div>
       </div>
     </div>  
+    {% endfor %}
 
   <!-- Closing row -->
   </div> 
 
 
   <!-- Icons Grid -->
-  <section class="features-icons bg-light text-center mx-auto mt-5">
+  <section class="features-icons text-center mx-auto my-2">
     <div class="container">
       <div class="row">
         <div class="col-md-4">
