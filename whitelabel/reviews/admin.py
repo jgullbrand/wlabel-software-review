@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import SoftwareProduct, Reviews, Category
 
-# Register your models here.
+admin.site.register(SoftwareProduct)
+admin.site.register(Reviews)
+admin.site.register(Category)
