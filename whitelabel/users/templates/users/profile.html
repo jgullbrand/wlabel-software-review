@@ -1,0 +1,77 @@
+{% extends "reviews/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <div class="row mt-2 mx-auto">
+      <!-- software categories Column -->
+      <div class="col-md-7">
+
+    <div class="card mb-1 mt-1" style="height:15rem">
+        <div class="card-header text-center text-white bg-dark">
+            <strong style="font-size: 15pt">Profile Information</strong>
+        </div>  
+        <div class="card-body text-center">
+          <form method ="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <div class = "mx-auto text-center">
+              <button type="submit" class="btn btn-dark text-center mt-1">Update Profile Information</button>
+            </div>
+          </form>
+        </div>
+    </div>  
+
+        <!-- software categories -->
+      </div>  
+
+       <!-- Sidebar Widgets Column -->
+      <div class="col-md-5">
+
+                <!-- Side Widget - View other categories-->
+    <div class="card mb-1 mt-1 mx-auto" style="height:15rem">
+        <div class="card-header text-center text-white bg-dark">
+            <strong style="font-size: 15pt">Profile Activity</strong>
+        </div>  
+        <div class="card-body text-center">
+          </br>
+          <span><strong>Number of Reviews: </strong> 0 </span>
+          </br>
+          </br>
+          <span><strong>Number of Products Listed: </strong> 0 </span>
+        </div>
+    </div>  
+
+      </div>  
+
+  <!-- Closing row -->
+  </div> 
+
+
+  <div class="row mt-2 mx-auto">
+    
+    <div class="col-md-12">
+      <div class="card mb-1 mt-1" style="height:15rem">
+          <div class="card-header text-white bg-dark">
+              <span><strong style="font-size: 15pt">Products Listed:</strong>
+              <button type="button" class="btn btn-primary btn-sm float-right">Create Product Listing</button></span>
+          </div>  
+          <div class="card-body text-center">
+            <form method ="POST">
+              <div class = "mx-auto text-center">
+                <button type="submit" class="btn btn-dark text-center mt-1">Update Profile Information</button>
+              </div>
+            </form>
+          </div>
+      </div>  
+
+    </div>
+
+  </div>   
+
+
+
+
+
+
+{% endblock %}
