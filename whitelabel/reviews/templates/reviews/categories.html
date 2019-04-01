@@ -1,9 +1,47 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-<h1>Categories</h1>
-</body>
-</html>
+{% extends "reviews/base.html" %}
+
+{% block content %}
+
+  <div class="row mt-5">
+
+      <!-- software categories Column -->
+      <div class="col-md-8">
+
+        <div class="card">
+          <div class="card-header text-center">
+            <span style="font-size: 20pt"> Full List of Software Categories</span>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li style="font-size: 15pt" class="list-group-item">Name of software category <button type="button" class="btn btn-primary btn-sm float-right">View Software Products &rarr;</button></li>
+            <li class="list-group-item">Dapibus ac facilisis in</li>
+            <li class="list-group-item">Vestibulum at eros</li>
+          </ul>
+        </div>
+
+        <!-- software categories -->
+
+      </div>  
+
+
+       <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+                <!-- Side Widget - View other categories-->
+        <div class="card">
+          <h5 class="card-header text-center">Sidebar</h5>
+          <div class="card-body">
+            <ul class="list-unstyled mb-0">
+                <li class = "mb-1">
+                  <a href="#">Will update with suggestions for other software categories?</a>
+                </li>
+            </ul>    
+          </div>
+        </div>
+
+      </div>  
+
+
+  <!-- Closing row -->
+  </div> 
+
+  {% endblock %}
