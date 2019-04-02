@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 class SoftwareProduct(models.Model):
 	product_name = models.CharField(max_length=150)
@@ -30,6 +31,11 @@ class Reviews(models.Model):
 
 class Category(models.Model):
 	category_name = models.CharField(max_length=150)
+	category_url = models.SlugField(max_length=500, blank=True)
+
+	def save(self, *args, **kwargs):
+		self.category_url= slugify(self.category_name)
+		super(Category, self).save(*args, **kwargs)    
 
 	class Meta:
 		verbose_name_plural = "Categories"		
