@@ -1,0 +1,63 @@
+{% extends "reviews/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="card mb-3 mt-3 mx-auto" style="width: 33rem;">
+        <div class="card-header text-center text-white bg-dark">
+            <strong>List your Product</strong>
+        </div>  
+        <div class="card-body text-center">
+          <form method ="POST" class=>
+            {% csrf_token %}
+
+              <div class="form-row">
+                <div class="col">
+                  <strong>{{form.product_name|as_crispy_field}}</strong>
+                </div>
+              </div>            
+
+              <div class="form-row mt-4">
+                <div class="col">
+                  <strong>{{form.company_name|as_crispy_field}}</strong>
+                </div>
+                <div class="col">
+                  <strong>{{form.website|as_crispy_field}}</strong>
+                </div>
+              </div>
+
+              <div class="form-row mt-4">
+                <div class="col">
+                  <strong>{{form.product_description|as_crispy_field}}</strong>
+                </div>
+              </div>  
+              <div class="form-row mt-4">
+                <div class="col">
+                  <strong>{{form.company_logo|as_crispy_field}}</strong>
+                </div> 
+              </div>    
+              <div class="form-row mt-4">
+                <div class="col">
+                   <strong>{{form.free_trial_offered|as_crispy_field}}</strong>
+                </div>    
+              </div>  
+              <div class="form-row mt-4">
+                <div class="col">
+                  <strong>{{form.pricing_details|as_crispy_field}}</strong>
+                </div>   
+              </div>
+              <div class="form-row mt-4">   
+                <div class="col">
+                  <strong>{{form.category|as_crispy_field}}</strong>
+                </div>                                                               
+              </div>   
+
+       
+            <div class = "mx-auto text-center mt-4">
+              <button type="submit" class="btn btn-dark text-center mt-2">Create Product Listing</button>
+            </div>
+          </form>
+        </div>
+    </div>  
+
+{% endblock %}

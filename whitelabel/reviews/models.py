@@ -4,11 +4,12 @@ from django.template.defaultfilters import slugify
 
 class SoftwareProduct(models.Model):
 	product_name = models.CharField(max_length=150)
-	website_link = models.URLField()
-	image_logo = models.ImageField(blank=True, null=True)
-	description = models.TextField()
-	pricing_details = models.CharField(max_length=200)
-	free_trial = models.CharField(max_length=3, choices =(('Yes', 'Yes'), ('No', 'No'),))
+	company_name = models.CharField(max_length=150)
+	website = models.URLField()
+	company_logo = models.ImageField(blank=True, null=True)
+	product_description = models.TextField()
+	pricing_details = models.TextField()
+	free_trial_offered = models.CharField(max_length=3, choices =(('Yes', 'Yes'), ('No', 'No'),))
 	admin_user = models.ForeignKey(User, on_delete=models.CASCADE)
 	category = models.ManyToManyField('Category')
 
