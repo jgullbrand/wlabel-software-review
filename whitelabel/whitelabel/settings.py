@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'reviews.apps.ReviewsConfig',
-    "users.apps.UsersConfig",
+    'users.apps.UsersConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -131,9 +131,21 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-
-
 LOGIN_REDIRECT_URL = 'home'
-
 LOGIN_URL = 'login'
+
+AWS_ACCESS_KEY_ID = os.environ.get('R_AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('R_AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('R_AWS_STORAGE_BUCKET_NAME')
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+AWS_S3_BUCKET_AUTH = False
+AWS_S3_REGION_NAME = 'us-east-2'
+AWS_S3_HOST = 's3.us-east-2.amazonaws.com'
+S3_USE_SIGV4 = True
+
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
