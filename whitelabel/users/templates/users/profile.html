@@ -5,18 +5,18 @@
 
   <div class="row mt-2 mx-auto">
       <!-- software categories Column -->
-      <div class="col-md-7">
+      <div class="col-md-6">
 
-    <div class="card mb-1 mt-1" style="height:15rem">
+    <div class="card mb-1 mt-1" style="height:20rem">
         <div class="card-header text-center text-white bg-dark">
-            <strong style="font-size: 15pt">Profile Information</strong>
+            <strong style="font-size: 15pt">User Information</strong>
         </div>  
         <div class="card-body text-center">
           <form method ="POST">
             {% csrf_token %}
-            {{form.as_p}}
+            {{profile_form.as_p}}
             <div class = "mx-auto text-center">
-              <button type="submit" class="btn btn-dark text-center mt-1">Update Profile Information</button>
+              <button type="submit" name="profile_submit" class="btn btn-dark text-center mt-1">Update User Information</button>
             </div>
           </form>
         </div>
@@ -26,21 +26,26 @@
       </div>  
 
        <!-- Sidebar Widgets Column -->
-      <div class="col-md-5">
+      <div class="col-md-6">
 
-                <!-- Side Widget - View other categories-->
-    <div class="card mb-1 mt-1 mx-auto" style="height:15rem">
-        <div class="card-header text-center text-white bg-dark">
-            <strong style="font-size: 15pt">Profile Activity</strong>
+        <div class="card mb-1 mt-1 mx-auto" style="height:20rem">
+            <div class="card-header text-center text-white bg-dark">
+                <strong style="font-size: 15pt">Company Information</strong>
+            </div>  
+            <div class="card-body text-center">
+              <form method ="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <strong>Company Name: </strong>
+                <p>{{company_form.company_name}}</p>
+                <strong>Company Logo: </strong>
+                {{company_form.company_logo}}
+                <img class="mr-3 article-img mb-2" src="{{ user.company.company_logo.url }}" height="75px" width="75px"> 
+                <div class = "mx-auto text-center">
+                  <button type="submit" name="company_submit" class="btn btn-dark text-center mt-1">Update Company Information</button>
+                </div>
+              </form>
+            </div>
         </div>  
-        <div class="card-body text-center">
-          </br>
-          <span><strong>Number of Reviews: </strong> 0 </span>
-          </br>
-          </br>
-          <span><strong>Number of Products Listed: </strong> 0 </span>
-        </div>
-    </div>  
 
       </div>  
 
@@ -48,21 +53,48 @@
   </div> 
 
 
+
+   <div class="row mt-2 mx-auto">
+    <div class="col-md-12">
+        <div class="card mb-1 mt-1 mx-auto">
+            <div class="card-header text-center text-white bg-dark">
+                <strong style="font-size: 15pt">Profile Activity</strong>
+            </div>  
+            <div class="card-body text-center" style="font-size: 13pt">
+              <span class="mr-4"><strong>Number of Reviews: </strong> {{user.reviews_set.count}} </span>
+              <span class="ml-4"><strong>Number of Products Listed: </strong> {{user.softwareproduct_set.count}} </span>
+            </div>
+        </div>  
+     </div>   
+    <!-- Closing row -->
+   </div> 
+
+
+
   <div class="row mt-2 mx-auto">
     
     <div class="col-md-12">
       <div class="card mb-1 mt-1" style="">
           <div class="card-header text-white bg-dark">
-              <span><strong style="font-size: 15pt">Products Listed:</strong>
-              <button type="button" class="btn btn-primary btn-sm float-right">Create Product Listing</button></span>
+              <span><strong style="font-size: 15pt">My Products Listed:</strong>
+              <a href="{% url 'list_product' %}"><button type="button" class="btn btn-primary btn-sm float-right">Create Product Listing</button></a></span>
           </div>  
           <div class="card-body">
-            
-            <li class="list-group-item my-2">
-              <h5>Product Name</h5>
-              <p>Description Description Description</p>
-              <a href="#"><button type="button" class="btn btn-info btn-sm mr-4">View Product Listing</button></a>
+            {% for product in user.softwareproduct_set.all %}
+            <li class="list-group-item my-2 border-dark">
+              <p><strong>Product Name: </strong> {{product.product_name}}</p>
+              <p><strong>Product Description: </strong> {{product.product_description}}</p>
+              <p><strong>Pricing Details: </strong> {{product.pricing_details}}</p>
+              <p><strong>Free Trial Offered?: </strong> {{product.free_trial_offered}}</p>
+              <p><strong>Product Website: </strong> {{product.product_website}}</p>
+              {% for category in product.category.all %}
+                <p><strong>Category: </strong> {{category.category_name}}</p>
+              {% endfor %}
+              <a href="#"><button type="button" class="btn btn-outline-primary btn-sm mr-2">View Listing</button></a>
+              <a href="#"><button type="button" class="btn btn-outline-secondary btn-sm mr-2">Update</button></a>
+              <a href="#"><button type="button" class="btn btn-outline-danger btn-sm mr-2">Delete</button></a>
             </li>  
+            {% endfor %}
 
           </div>
       </div>  

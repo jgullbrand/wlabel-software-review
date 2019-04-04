@@ -2,11 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 
+
 class SoftwareProduct(models.Model):
 	product_name = models.CharField(max_length=150)
-	company_name = models.CharField(max_length=150)
-	website = models.URLField()
-	company_logo = models.ImageField(blank=True, null=True)
+	product_website = models.URLField(blank=True, null=True)
 	product_description = models.TextField()
 	pricing_details = models.TextField()
 	free_trial_offered = models.CharField(max_length=3, choices =(('Yes', 'Yes'), ('No', 'No'),))

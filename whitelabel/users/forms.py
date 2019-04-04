@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import Company
 
 class RegistrationForm(UserCreationForm):
 	email = forms.EmailField(required=True)
@@ -25,3 +26,10 @@ class UpdateProfile(forms.ModelForm):
             'username': None,
             'email': None,
         }
+
+
+class UpdateCompany(forms.ModelForm):
+
+	class Meta:
+		model = Company
+		fields = ['company_name', 'company_logo']  

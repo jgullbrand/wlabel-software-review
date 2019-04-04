@@ -20,9 +20,14 @@ class CategoryView(ListView):
 class CreatePosting(CreateView):
 	model = SoftwareProduct
 	template_name = 'reviews/product_listing.html'
-	fields = ['product_name', 'company_name', 'website', 'company_logo', 'product_description', 'pricing_details', 
+	fields = ['product_name', 'product_website', 'product_description', 'pricing_details', 
 				'free_trial_offered', 'category']	
 
 	def form_valid(self,form):
 		form.instance.admin_user = self.request.user
 		return super().form_valid(form)
+
+
+class ProductView(DetailView):	
+	model = SoftwareProduct
+	template_name = 'reviews/product_detail.html'	

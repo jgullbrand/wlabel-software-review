@@ -36,9 +36,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link mr-3" href="#">Software Categories</a>
-          </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
             <span class="nav-link mr-3">Logged in as <a href="{% url 'profile' %}">{{user.username}}</a></span>
