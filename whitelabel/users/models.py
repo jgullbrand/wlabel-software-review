@@ -8,3 +8,6 @@ class Company(models.Model):
 
 	def __str__(self):
 		return f'{self.user.username}: {self.company_name}'
+
+	class Meta:
+		verbose_name_plural = "Companies"			

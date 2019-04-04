@@ -9,6 +9,7 @@ class SoftwareProduct(models.Model):
 	product_description = models.TextField()
 	pricing_details = models.TextField()
 	free_trial_offered = models.CharField(max_length=3, choices =(('Yes', 'Yes'), ('No', 'No'),))
+	featured_product = models.CharField(max_length=3, choices =(('Yes', 'Yes'), ('No', 'No'),))
 	admin_user = models.ForeignKey(User, on_delete=models.CASCADE)
 	category = models.ManyToManyField('Category')
 

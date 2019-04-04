@@ -1,12 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView, CreateView
+from django.urls import reverse
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import SoftwareProduct, Reviews, Category
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 
 class HomeView(ListView):
 	model = Category
 	template_name = 'reviews/home.html'
 	context_object_name = 'categories'
+
 
 class CategoryView(ListView):	
 	model = SoftwareProduct
@@ -17,7 +20,8 @@ class CategoryView(ListView):
 		category = get_object_or_404(Category, category_url=self.kwargs.get('category_url'))
 		return SoftwareProduct.objects.filter(category=category)
 
-class CreatePosting(CreateView):
+
+class CreatePosting(LoginRequiredMixin, CreateView):
 	model = SoftwareProduct
 	template_name = 'reviews/product_listing.html'
 	fields = ['product_name', 'product_website', 'product_description', 'pricing_details', 
@@ -31,3 +35,21 @@ class CreatePosting(CreateView):
 class ProductView(DetailView):	
 	model = SoftwareProduct
 	template_name = 'reviews/product_detail.html'	
+
+
+class UpdatePosting(LoginRequiredMixin, UpdateView):
+	model = SoftwareProduct
+	template_name = 'reviews/product_listing.html'
+	fields = ['product_name', 'product_website', 'product_description', 'pricing_details', 
+				'free_trial_offered', 'category']
+
+	def get_success_url(self):
+		return reverse('profile')			
+
+
+class DeletePosting(LoginRequiredMixin, DeleteView):
+	model = SoftwareProduct
+	template_name = 'reviews/delete_product_listing.html'
+
+	def get_success_url(self):
+		return reverse('profile')	
