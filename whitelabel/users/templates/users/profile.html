@@ -7,7 +7,7 @@
       <!-- software categories Column -->
       <div class="col-md-6">
 
-    <div class="card mb-1 mt-1" style="height:20rem">
+    <div class="card mb-1 mt-1 border-secondary" style="height:20rem">
         <div class="card-header text-center text-white bg-dark">
             <strong style="font-size: 15pt">User Information</strong>
         </div>  
@@ -17,7 +17,7 @@
             {% csrf_token %}
             {{profile_form.as_p}}
             <div class = "mx-auto text-center">
-              <button type="submit" name="profile_submit" class="btn btn-dark text-center mt-1">Update User Information</button>
+              <button type="submit" name="profile_submit" class="btn btn-primary text-center mt-1">Update User Information</button>
             </div>
           </form>
         </div>
@@ -29,7 +29,7 @@
        <!-- Sidebar Widgets Column -->
       <div class="col-md-6">
 
-        <div class="card mb-1 mt-1 mx-auto" style="height:20rem">
+        <div class="card mb-1 mt-1 mx-auto border-secondary" style="height:20rem">
             <div class="card-header text-center text-white bg-dark">
                 <strong style="font-size: 15pt">Company Information</strong>
             </div>  
@@ -42,7 +42,7 @@
                 {{company_form.company_logo}}
                 <img class="mr-3 article-img mb-2" src="{{ user.company.company_logo.url }}" height="75px" width="75px"> 
                 <div class = "mx-auto text-center">
-                  <button type="submit" name="company_submit" class="btn btn-dark text-center mt-1">Update Company Information</button>
+                  <button type="submit" name="company_submit" class="btn btn-primary text-center mt-1">Update Company Information</button>
                 </div>
               </form>
             </div>
@@ -57,7 +57,7 @@
 
    <div class="row mt-2 mx-auto">
     <div class="col-md-12">
-        <div class="card mb-1 mt-1 mx-auto">
+        <div class="card mb-1 mt-1 mx-auto border-secondary">
             <div class="card-header text-center text-white bg-dark">
                 <strong style="font-size: 15pt">Account Activity</strong>
             </div>  
@@ -82,10 +82,10 @@
           </div>  
           <div class="card-body">
             {% for product in user.softwareproduct_set.all %}
-            <li class="list-group-item my-2 border-dark">
+            <li class="list-group-item my-2 border-secondary">
               <p><strong>Product Name: </strong> {{product.product_name}}</p>
-              <p><strong>Product Description: </strong> {{product.product_description}}</p>
-              <p><strong>Pricing Details: </strong> {{product.pricing_details}}</p>
+              <p><strong>Product Description: </strong> {{product.product_description|linebreaks}}</p>
+              <p><strong>Pricing Details: </strong> {{product.pricing_details|linebreaks}}</p>
               <p><strong>Free Trial Offered?: </strong> {{product.free_trial_offered}}</p>
               <p><strong>Product Website: </strong> {{product.product_website}}</p>
               {% for category in product.category.all %}

@@ -5,11 +5,11 @@ from django.template.defaultfilters import slugify
 
 class SoftwareProduct(models.Model):
 	product_name = models.CharField(max_length=150)
-	product_website = models.URLField(blank=True, null=True)
+	product_website = models.URLField("Product website (add https://)", blank=True, null=True)
 	product_description = models.TextField()
 	pricing_details = models.TextField()
 	free_trial_offered = models.CharField(max_length=3, choices =(('Yes', 'Yes'), ('No', 'No'),))
-	featured_product = models.CharField(max_length=3, choices =(('Yes', 'Yes'), ('No', 'No'),))
+	featured_product = models.CharField(max_length=3, choices =(('Yes', 'Yes'), ('No', 'No'),), default='No')
 	admin_user = models.ForeignKey(User, on_delete=models.CASCADE)
 	category = models.ManyToManyField('Category')
 
@@ -27,8 +27,7 @@ class Reviews(models.Model):
 		verbose_name_plural = "Reviews"	
 
 	def __str__(self):
-		return f'{self.software_product} : {self.score}'	
-
+		return f'{self.software_product} : {self.score}'
 
 class Category(models.Model):
 	category_name = models.CharField(max_length=150)
