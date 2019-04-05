@@ -1,0 +1,37 @@
+{% extends "reviews/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="card mb-3 mt-3 mx-auto" style="width: 33rem;">
+        <div class="card-header text-center text-white bg-dark">
+            <strong>Post a Review</strong></br> (posting review as <a href="{% url 'profile' %}">{{user.username}}</a>)
+        </div>  
+        <div class="card-body text-center">
+          <form method ="POST" class=>
+            {% csrf_token %}
+
+              <div class="form-row">
+                <div class="col">
+                  <strong>{{form.review_title|as_crispy_field}}</strong>
+                </div>   
+              </div>            
+
+              <div class="form-row mt-4">
+                <div class="col">
+                  <strong>{{form.review_description|as_crispy_field}}</strong>
+                </div>
+              </div>    
+              <div class="form-row mt-4">
+                <div class="col">
+                   <strong>{{form.score|as_crispy_field}}</strong>
+                </div>    
+              </div>  
+            <div class = "mx-auto text-center mt-4">
+              <button type="submit" class="btn btn-dark text-center mt-2">Post Review</button>
+            </div>
+          </form>
+        </div>
+    </div>  
+
+{% endblock %}

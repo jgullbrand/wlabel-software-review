@@ -1,0 +1,15 @@
+{% extends "reviews/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <div class="mb-3 mt-3 mx-auto">
+        <div class="card-body text-center">         
+            <div class = "mx-auto text-center">
+              <h4>You have successfully logged out of your account.</h4>
+              <a class="btn btn-dark text-center mt-2" href="{% url 'login' %}" role="button">Log back into your Account</a>
+            </div>
+        </div>
+    </div>  
+
+{% endblock %}
