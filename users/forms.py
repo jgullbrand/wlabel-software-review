@@ -16,8 +16,8 @@ class RegistrationForm(UserCreationForm):
 			self.fields[fieldname].help_text = None	
 
 class UpdateProfile(forms.ModelForm):
-	username = forms.CharField(max_length=100, label='', widget=forms.Textarea(attrs={'cols': 40, 'rows': 1}))
-	email = forms.EmailField(required=True, label='', widget=forms.Textarea(attrs={'cols': 40, 'rows': 1}))
+	username = forms.CharField(max_length=100, label='', widget=forms.Textarea(attrs={'cols': 35, 'rows': 1}))
+	email = forms.EmailField(required=True, label='', widget=forms.Textarea(attrs={'cols': 35, 'rows': 1}))
 
 	class Meta:
 		model = User

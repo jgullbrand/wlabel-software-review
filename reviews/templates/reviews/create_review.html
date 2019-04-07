@@ -3,7 +3,8 @@
 
 {% block content %}
 
-    <div class="card mb-3 mt-3 mx-auto" style="width: 33rem;">
+<div class="container mb-3 mt-3 mx-auto col-md-8">
+    <div class="card">
         <div class="card-header text-center text-white bg-dark">
             <strong>Post a Review</strong></br> (posting review as <a href="{% url 'profile' %}">{{user.username}}</a>)
         </div>  
@@ -33,5 +34,6 @@
           </form>
         </div>
     </div>  
+</div>    
 
 {% endblock %}
